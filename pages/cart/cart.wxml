@@ -1,0 +1,6 @@
+<!-- 收货地址容器 -->
+<view class="receive_address_row">
+  <view class="address_btn">
+    <button type="primary" plain bindtap="handleChooseAddress">+ 添加收货地址</button>
+  </view>
+</view>
