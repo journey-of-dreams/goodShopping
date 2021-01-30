@@ -1,0 +1,214 @@
+page {
+  perspective: 800px;
+  background-color: #edece8;
+}
+
+.user_info_wrap {
+  height: 45vh;
+  position: relative;
+  overflow: hidden;
+
+  .user_img_wrap {
+    position: relative;
+
+    .user_bg {
+      height: 55vh;
+      // 模糊度设置
+      filter: blur(10rpx);
+    }
+
+    .user_info {
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      top: 25%;
+      text-align: center;
+
+      .user_icon {
+        height: 120rpx;
+        width: 120rpx;
+        border-radius: 50%;
+      }
+
+      .user_name {
+        margin-top: 32rpx;
+        color: #fff;
+      }
+    }
+  }
+
+  .user_btn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--themeColor);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 70rpx 0;
+
+    .cube {
+      width: 200rpx;
+      height: 200rpx;
+      /* 设置3d变形效果 */
+      transform-style: preserve-3d;
+      animation: rotate 20s infinite linear;
+
+      view {
+        width: 200rpx;
+        height: 200rpx;
+        opacity: 0.7;
+        position: absolute;
+
+        image {
+          width: 200rpx;
+          height: 200rpx;
+        }
+      }
+
+      .box1 {
+        transform: rotateY(90deg) translateZ(100rpx);
+      }
+
+      .box2 {
+        transform: rotateY(-90deg) translateZ(100rpx);
+      }
+
+      .box3 {
+        transform: rotateX(90deg) translateZ(100rpx);
+      }
+
+      .box4 {
+        transform: rotateX(-90deg) translateZ(100rpx);
+      }
+
+      .box5 {
+        transform: rotateY(180deg) translateZ(100rpx);
+      }
+
+      .box6 {
+        transform: rotateY(0deg) translateZ(100rpx);
+      }
+    }
+
+    @keyframes rotate {
+      form {
+        transform: rotateX(0) rotateZ(0)
+      }
+
+      to {
+        transform: rotateX(1turn) rotateZ(1turn)
+      }
+    }
+
+    navigator {
+      .user_login {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.user_content {
+  position: relative;
+
+  .user_main {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -50rpx;
+    color: #666;
+
+    .history_wrap {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10rpx 10rpx;
+      background: #fff;
+
+      navigator {
+        text-align: center;
+
+        .his_num {
+          color: var(--themeColor);
+        }
+
+        .his_name {}
+      }
+    }
+
+    .order_wrap {
+      margin-top: 20rpx;
+      background: #fff;
+
+      .order_title {
+        height: 80rpx;
+        padding: 15rpx;
+        border-bottom: 1rpx solid #ccc;
+      }
+
+      .order_content {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10rpx;
+        text-align: center;
+
+        navigator {
+          .iconfont {
+            color: var(--themeColor);
+            font-size: 40rpx;
+          }
+
+          .order_name {}
+        }
+      }
+    }
+
+    .address_wrap {
+      background: #fff;
+      margin-top: 20rpx;
+      padding: 20rpx;
+    }
+
+    .app_info_wrap {
+      margin-top: 20rpx;
+      background: #fff;
+
+      .app_info_item {
+        padding: 20rpx;
+        border-bottom: 1rpx solid #ccc;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+        button {
+          position: absolute;
+          width: 120rpx;
+          left: 20rpx;
+          top: 0;
+          height: 100%;
+          opacity: 0;
+        }
+      }
+    }
+
+    .recommend_wrap {
+      padding: 20rpx;
+      margin-top: 20rpx;
+      background: #fff;
+      margin-bottom: 100rpx;
+      position: relative;
+      button{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 250rpx;
+        opacity: 0;
+      }
+    }
+  }
+}

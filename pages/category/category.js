@@ -40,7 +40,7 @@ Page({
     }
   },
   // 使用es7的async await来发送请求
-  async getCates() {
+  async getCates(index=0) {
     const result = await request({
       url: '/categories'
     })
@@ -53,11 +53,13 @@ Page({
     // 左侧大菜单数据
     let leftMenuList = this.Cates.map(v => v.cat_name)
     // 右侧商品数据
-    let rightContent = this.Cates[0].children
+    let rightContent = this.Cates[index].children
     this.setData({
       leftMenuList,
       rightContent
     })
+    // 关闭刷新
+    wx.stopPullDownRefresh()
   },
   // 左侧菜单的点击事件
   handleItemTab(e) {
@@ -70,5 +72,10 @@ Page({
       scrollTop: 0
     })
     console.log(this.data.currentIndex)
+  },
+  // 下拉刷新
+  onPullDownRefresh() {
+    this.Cates = []
+    this.getCates(this.data.currentIndex)
   }
 })

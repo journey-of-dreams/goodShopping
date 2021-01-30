@@ -1,0 +1,14 @@
+.about_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vw;
+  padding: 0 20rpx;
+}
+.about_wrap .about_content {
+  border-bottom-style: inset;
+  border-radius: 30rpx;
+  padding: 20rpx;
+  color: orangered;
+  font-size: 40rpx;
+}

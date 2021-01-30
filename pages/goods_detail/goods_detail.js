@@ -14,12 +14,17 @@ import regeneratorRuntime from '../../lib/runtime/runtime'
 
 Page({
   data: {
-    goodsObj: {}
+    goodsObj: {},
+    isCollect: false //商品默认未收藏
   },
-  // 商品对象
+  // 当前商品对象
   GoodsInfo: {},
-  onLoad: function (options) {
-    const goods_id = options.goods_id
+  onShow: function () {
+    let pages = getCurrentPages()
+    let options = pages[pages.length - 1].options
+    const {
+      goods_id
+    } = options
     this.getGoodsDetail(goods_id)
   },
   async getGoodsDetail(goods_id) {
@@ -27,6 +32,9 @@ Page({
       url: '/goods/detail?goods_id=' + goods_id
     })
     this.GoodsInfo = res
+    // 获取缓存中的商品数组
+    let collect = wx.getStorageSync("collect") || []
+    let isCollect = collect.some(v => v.goods_id === this.GoodsInfo.goods_id)
     this.setData({
       // 由于拿到的goodsObj中有很多数据不需要用，因此我们将需要用到的数据拿出来，这样可以很好的节约性能
       goodsObj: {
@@ -35,7 +43,8 @@ Page({
         // iphone部分手机无法识别webp图片格式，临时自己将webp格式改成jpg
         goods_introduce: res.goods_introduce.replace(/\.webp/g, '.jpg'),
         pics: res.pics
-      }
+      },
+      isCollect
     })
   },
   // 点击轮播图方法预览
@@ -57,6 +66,7 @@ Page({
     if (index === -1) {
       // 不存在，第一次添加
       this.GoodsInfo.num = 1
+      this.GoodsInfo.checked = true
       cart.push(this.GoodsInfo)
       wx.showToast({
         title: '成功添加新商品',
@@ -74,5 +84,33 @@ Page({
     }
     // 把购物车重新添加回缓存中
     wx.setStorageSync('cart', cart)
+  },
+  // 点击收藏商品
+  handleCollect() {
+    // 获取缓存中的商品收藏数组
+    let collect = wx.getStorageSync("collect") || []
+    let index = collect.findIndex(v => v.goods_id === this.GoodsInfo.goods_id)
+    if (index !== -1) {
+      // 已经存在于商品收藏数组中了，取消收藏，从数组中删除该商品
+      collect.splice(index, 1)
+      wx.showToast({
+        title: '取消收藏',
+        mask: true,
+        duration:1000
+      })
+    } else {
+      collect.push(this.GoodsInfo)
+      wx.showToast({
+        title: '收藏成功',
+        mask: true
+      })
+    }
+    // 存入缓存
+    wx.setStorageSync("collect", collect)
+    // 修改图标属性isCollect
+    let isCollect = this.data.isCollect
+    this.setData({
+      isCollect: !isCollect
+    })
   }
 })

@@ -8,24 +8,26 @@ Page({
   data: {
     swiperList: [],
     cateList: [],
-    floorList:[]
+    floorList: [],
+    realGoods_id: []
   },
   onLoad(options) {
     // 发送异步请求获取轮播图数据
     this.getSwperList(),
-    this.getCateList(),
-    this.getFloorList()
+      this.getCateList(),
+      this.getFloorList()
   },
   // 轮播图数据
   getSwperList() {
     request({
       url: '/home/swiperdata',
     }).then(result => this.setData({
-      swiperList: result
+      swiperList: result,
+      realGoods_id: result.map(v=>v.goods_id)
     }))
   },
   // 分类导航数据
-  getCateList(){
+  getCateList() {
     request({
       url: '/home/catitems',
     }).then(result => this.setData({
@@ -33,7 +35,7 @@ Page({
     }))
   },
   // 楼层数据
-  getFloorList(){
+  getFloorList() {
     request({
       url: '/home/floordata',
     }).then(result => this.setData({

@@ -1,0 +1,46 @@
+page {
+  background: #dedede;
+  padding: 20rpx;
+}
+
+.search_row {
+  height: 80rpx;
+  display: flex;
+
+  input {
+    flex: 1;
+    height: 100%;
+    background: #fff;
+    margin-right: 10rpx;
+    padding-left: 30rpx;
+  }
+
+  button {
+    height: 100%;
+    font-size: 26rpx;
+    background: #fff;
+    padding: 0;
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.search_content {
+  margin-top: 20rpx;
+  background: #fff;
+  font-size: 26rpx;
+
+  .search_item {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1rpx solid #ccc;
+    padding: 15rpx 10rpx;
+    .iconfont{
+      display: inline-block;
+      margin-right: 15rpx;
+    }
+  }
+}

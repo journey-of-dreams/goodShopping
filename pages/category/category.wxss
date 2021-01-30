@@ -41,7 +41,8 @@ pages {
 }
 .cates .cates_container .right_content .goods_group .goods_list navigator {
   width: 33.33%;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   display: flex;
 }

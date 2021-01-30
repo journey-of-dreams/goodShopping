@@ -12,7 +12,9 @@
     "pages/feedback/feedback",
     "pages/login/login",
     "pages/auth/auth",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/about_us/about_us",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +23,8 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "icons/home.png",

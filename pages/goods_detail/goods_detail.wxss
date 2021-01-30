@@ -38,6 +38,9 @@ page {
   flex-direction: column;
   border-left: #737373 solid 3rpx;
 }
+.goods_name_row .goods_collect .icon-shoucang1 {
+  color: orangered;
+}
 .goods_info .goods_info_title {
   font-size: 32rpx;
   color: var(--themeColor);

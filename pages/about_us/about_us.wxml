@@ -1,0 +1,9 @@
+<view class="about_wrap">
+  <view class="about_content">
+    <image
+      src="https://img-u-0.51miz.com/preview/element/00/01/04/55/E-1045507-3496EA91.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fh/320">
+    </image>
+    <text>你不必逞强，不必说谎，懂你的人自然会知道你原本的模样。
+    </text>
+  </view>
+</view>

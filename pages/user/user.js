@@ -1,66 +1,35 @@
 // pages/user/user.js
+import {
+  chooseAddress,
+  showModel,
+  showToast
+} from '../../utils/asyncWx.js'
+import regeneratorRuntime from '../../lib/runtime/runtime'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    userInfo: {},
+    // 被收藏的商品数量
+    collectNums: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShow() {
+    const userInfo = wx.getStorageSync('userInfo')
+    const collect = wx.getStorageSync('collect') || []
+    this.setData({
+      userInfo,
+      collectNums: collect.length
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // 点击添加收货地址
+  async handleChooseAddress(e) {
+    try {
+      // 获取收货地址
+      let address = await chooseAddress()
+      address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
+      // 将收货地址存入缓存中
+      wx.setStorageSync('address', address)
+    } catch (error) {
+      console.log(error)
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

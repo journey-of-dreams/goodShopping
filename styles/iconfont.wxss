@@ -60,6 +60,7 @@
   content: "\e66e";
 }
 
-
-
+.icon-sousuo:before {
+  content: "\e601";
+}
 

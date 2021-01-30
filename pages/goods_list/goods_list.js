@@ -9,7 +9,7 @@
 1.触发下拉刷新事件，在页面的json文件中开启配置
 2.重置数据数组
 3.重置页码为1 
-4.数据请求成功手动关闭等待效果
+4.数据请求成功手动关闭等待效果 
 */
 import {
   request
@@ -50,7 +50,8 @@ Page({
   // 总页数
   totalPages: 1,
   onLoad: function (options) {
-    this.QueryParams.cid = options.cid
+    this.QueryParams.cid = options.cid || ""
+    this.QueryParams.query = options.query || ""
     this.getGoodsList()
 
 
@@ -83,7 +84,8 @@ Page({
     if (this.QueryParams.pagenum >= this.totalPages) {
       // 没有页数了
       wx.showToast({
-        title: '没有数据了',
+        title: '没有更多数据了o(╥﹏╥)o',
+        icon: 'none'
       })
     } else {
       this.QueryParams.pagenum++

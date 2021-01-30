@@ -4,7 +4,8 @@
   <view class="cates_container">
     <!-- 左侧菜单 -->
     <scroll-view scroll-y class="left_menu">
-      <view class="menu_item {{index===currentIndex?'active':''}}" bindtap="handleItemTab" data-index="{{index}}" wx:for="{{leftMenuList}}" wx:key="*this">{{item}}</view>
+      <view class="menu_item {{index===currentIndex?'active':''}}" bindtap="handleItemTab" data-index="{{index}}"
+        wx:for="{{leftMenuList}}" wx:key="*this">{{item}}</view>
     </scroll-view>
     <!-- 右侧商品内容 -->
     <scroll-view scroll-y class="right_content" scroll-top="{{scrollTop}}">
@@ -18,7 +19,8 @@
         </view>
         <view class="goods_list">
           <!-- 右侧商品第二层 -->
-          <navigator wx:for="{{item1.children}}" wx:key="cat_id" wx:for-item="item2" wx:for-index="index2" url="/pages/goods_list/goods_list?cid={{item2.cat_id}}">
+          <navigator wx:for="{{item1.children}}" wx:key="cat_id" wx:for-item="item2" wx:for-index="index2"
+            url="/pages/goods_list/goods_list?cid={{item2.cat_id}}">
             <!-- 右侧商品图片与小标题 -->
             <image src="{{item2.cat_icon}}" mode="widthFix"></image>
             <view class="goods_name">{{item2.cat_name}}</view>

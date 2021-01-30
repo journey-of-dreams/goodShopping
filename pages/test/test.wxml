@@ -1,0 +1,4 @@
+<view>
+  <text>当前的value为：{{sliderValue}}</text>
+  <slider min="50" max="200" step="2" show-value backgroundColor="#0094ff" activeColor="yellow" block-color="red" bindchanging="handleSlider"></slider>
+</view>
